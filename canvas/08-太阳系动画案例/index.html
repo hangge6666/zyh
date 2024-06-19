@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+      body {
+          padding: 0;
+          margin: 0;
+      }
+      canvas {
+          background-color: rgba(255,0,0,.1);
+      }
+  </style>
+</head>
+<body>
+<canvas id="tutorial" width="300" height="300">
+  你的浏览器canvas，请升级你的浏览器
+</canvas>
+<script>
+    window.onload = function () {
+        // 1.拿到元素
+        let canvasEl = document.getElementById('tutorial');
+
+        let ctx = canvasEl.getContext('2d'); // 2d | webgl
+
+        // 1.准备一张图片
+        let background = new Image()
+        background.src = '../images/canvas_sun.png'
+        let earth = new Image()
+        earth.src = '../images/canvas_earth.png'
+        let moon = new Image()
+        moon.src = '../images/canvas_moon.png'
+
+
+        requestAnimationFrame(draw)
+        function  draw() {
+            ctx.save()
+            ctx.clearRect(0,0,300,300)
+            drawBackground()
+            drawEarth()
+            ctx.restore()
+            requestAnimationFrame(draw)
+        }
+
+
+
+        function drawBackground() {
+            ctx.save()
+            ctx.drawImage(background,0,0)
+            ctx.translate(150,150)
+            ctx.strokeStyle = 'rgba(0, 153, 255, 0.4)'
+            ctx.beginPath()
+            ctx.arc(0,0,105,0,Math.PI * 2)
+            ctx.stroke()
+            ctx.restore()
+        }
+
+        function drawEarth() {
+            let time = new Date()
+            let second = time.getSeconds()
+            let milliseconds = time.getMilliseconds()
+            ctx.save()
+            ctx.translate(150,150)
+
+            ctx.rotate(
+                Math.PI * 2 / 60 * second +
+                Math.PI * 2 / 60 / 1000 * milliseconds
+            )
+            ctx.translate(105,0)
+            ctx.drawImage(earth,-12,-12)
+            drawMoon(second,milliseconds)
+            ctx.restore()
+        }
+
+        function  drawMoon(second,milliseconds) {
+            ctx.save()
+            ctx.rotate(
+                Math.PI * 2 / 60 * second +
+                Math.PI * 2 / 60 / 1000 * milliseconds
+            )
+            ctx.translate(0,28)
+            ctx.drawImage(moon, -3.5,-3.5)
+            ctx.restore()
+        }
+
+
+
+
+
+
+
+
+
+
+
+        ctx.save()
+
+    }
+</script>
+</body>
+</html>

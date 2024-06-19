@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        canvas {
+            background-color: rgba(255,0,0,.1);
+        }
+    </style>
+</head>
+<body>
+<canvas id="tutorial" width="300" height="300">
+    你的浏览器canvas，请升级你的浏览器
+</canvas>
+<script>
+    window.onload = function () {
+        // 1.拿到元素
+        let canvasEl = document.getElementById('tutorial');
+
+        let ctx = canvasEl.getContext('2d'); // 2d | webgl
+
+        // 1.创建一个路径
+        ctx.beginPath()
+        // 2.绘图指令
+        // ctx.moveTo(0,0)
+        ctx.rect(100,100,100,50)
+        // 3.闭合
+        ctx.closePath()
+        // 4.描边或者填充
+        ctx.stroke()
+    }
+</script>
+</body>
+</html>

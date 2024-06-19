@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+        canvas {
+            background-color: rgba(255,0,0,.1);
+        }
+    </style>
+</head>
+<body>
+<canvas id="tutorial" width="300" height="150px">
+    你的浏览器canvas，请升级你的浏览器
+</canvas>
+<script>
+    window.onload = function () {
+        // 1.拿到元素
+        let canvasEl = document.getElementById('tutorial');
+
+        let ctx = canvasEl.getContext('2d'); // 2d | webgl
+
+        /**
+         * 画一个笑脸
+         */
+        // 1. 创建起始点 beginPath
+        // 2. 画出路径 arc lineTo
+        // 3. 关闭路径 closePath()
+        // 4.一旦路径生产就很能通过stroke或者fill来填充路径
+        ctx.lineWidth = 10 // 画笔大小
+        ctx.beginPath();
+        // 使用的绘图的命令
+        ctx.moveTo(10,10)
+        ctx.lineTo(100,10)
+        ctx.closePath() // 不是必须的
+        ctx.stroke() // 线条只能用 stroke来填充
+
+    }
+</script>
+</body>
+</html>

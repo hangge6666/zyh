@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        canvas {
+            background-color: rgba(255,0,0,.1);
+        }
+    </style>
+</head>
+<body>
+    <canvas id="tutorial" width="300" height="150px">
+        你的浏览器canvas，请升级你的浏览器
+    </canvas>
+    <script>
+        window.onload = function () {
+            // 1.拿到元素
+            let canvasEl = document.getElementById('tutorial');
+            console.log("%o", canvasEl)
+            // 2.拿到Canvas 渲染的上下文
+            // ctx是一个绘图的上下文 提供了绘图的指令 可以绘制各种图形
+            let ctx = canvasEl.getContext('2d'); // 2d | webgl
+            console.log("%o", ctx)
+        }
+    </script>
+</body>
+</html>

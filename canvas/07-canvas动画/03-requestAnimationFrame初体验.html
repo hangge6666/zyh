@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+  <script>
+      // 在浏览器的下一次重绘之前回调该函数的回调函数draw
+    requestAnimationFrame(draw)
+
+
+      /* 一秒钟会被回调60次左右 */
+    function draw() {
+        console.log(1)
+        requestAnimationFrame(draw)
+    }
+  </script>
+</body>
+</html>

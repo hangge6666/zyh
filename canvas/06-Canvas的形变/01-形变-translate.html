@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<title>Title</title>
+		<style>
+			body {
+				padding: 0;
+				margin: 0;
+			}
+			canvas {
+				background-color: rgba(255, 0, 0, 0.1);
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="tutorial" width="300" height="150px">
+			你的浏览器canvas，请升级你的浏览器
+		</canvas>
+		<script>
+			window.onload = function () {
+				// 1.拿到元素
+				let canvasEl = document.getElementById('tutorial')
+
+				let ctx = canvasEl.getContext('2d') // 2d | webgl
+
+				// 1.形变  平移坐标轴  没有保存状态
+				// ctx.translate(100,0)
+				// ctx.fillRect(0,0,100,50)
+				//
+				//
+				// // 基于上一个坐标系统进行平移
+				// ctx.translate(100,100)
+				// ctx.strokeRect(0,0,100,50)
+
+				// 2.形变保存状态
+				ctx.save()
+				ctx.translate(100, 0)
+				ctx.fillRect(0, 0, 100, 50)
+
+				// 恢复到原来的坐标点
+				ctx.restore()
+
+				// 报纸形变之前的状态
+				ctx.save()
+				ctx.translate(100, 100)
+				ctx.fillStyle = 'red'
+				ctx.fillRect(0, 0, 100, 50)
+			}
+		</script>
+	</body>
+</html>
